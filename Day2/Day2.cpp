@@ -54,5 +54,45 @@ int main(){
             safes++;
         }
     }
-    cout<<safes;
+    cout << safes << endl;
+
+    // Part 2
+    int safes2 = 0;
+    for (vector<int> row : allRows){
+        bool isRowSafe = false;
+        for (int i = 0; i < row.size(); i++){
+            vector<int> rowCopy = row;
+            rowCopy.erase(rowCopy.begin() + i);
+            int jaki; 
+            if (rowCopy[0] + 3 >= rowCopy[1] && rowCopy[0] < rowCopy[1]){
+                jaki = 0;
+            }
+            else if (rowCopy[0] > rowCopy[1] && rowCopy[0] <= rowCopy[1] + 3){
+                jaki = 1;
+            }
+            else{
+                continue;
+            }
+            for (int j = 0; j < rowCopy.size() - 1; j++){
+                if (rowCopy[j+1] <= rowCopy[j] + 3 && rowCopy[j+1] > rowCopy[j] && jaki == 0){ // kolejny większy - rosnący
+                    continue;
+                }  
+                if (rowCopy[j+1] + 3 >= rowCopy[j]  && rowCopy[j+1] < rowCopy[j] && jaki == 1){ // kolejny mniejszy - malejący
+                    continue;
+                }  
+                else{
+                    jaki = -1;
+                    break;
+                }  
+            }
+            if (jaki == 0 || jaki == 1){
+                isRowSafe = true;
+                break;
+            }
+        }
+        if (isRowSafe){
+            safes2++;
+        }
+    }
+    cout << safes2;
 }
