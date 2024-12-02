@@ -28,7 +28,7 @@ int main() {
         suma += abs(left[i] - right[i]);
     }
 
-    cout<<suma<<endl;
+    cout << suma << endl;
 
     // Part 2
     int suma2 = 0;
@@ -42,6 +42,6 @@ int main() {
         }
         suma2 += lewy * counter;
     }
-    cout<<suma2;
+    cout << suma2;
     return 0;
 }
