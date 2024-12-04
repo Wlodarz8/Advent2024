@@ -5,6 +5,9 @@
         "iostream": "cpp",
         "cmath": "cpp",
         "fstream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "xstring": "cpp",
+        "regex": "cpp",
+        "ostream": "cpp"
     }
 }
