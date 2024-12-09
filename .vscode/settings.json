@@ -8,6 +8,7 @@
         "iosfwd": "cpp",
         "xstring": "cpp",
         "regex": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "vector": "cpp"
     }
 }
