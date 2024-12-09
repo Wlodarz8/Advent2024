@@ -133,5 +133,74 @@ int main(){
         }
     }
 
+    // Part 2
+    vector<vector<bool>> middle(lines.size(), vector<bool>(lines[0].size(), false)); 
+    string target2 = "MAS";
+    string target3 = "SAM";
+    int suma2 = 0;
+    string temp = "";
+     for (int row = 0; row < lines.size(); row++){
+        for (int col = 0; col < lines[0].size(); col++){
+            if (lines[row][col] == 'M'){
+                
+                // lewy-gorny kwadrat
+                if (row - 2 >= 0 && col - 2 >= 0){
+                    if (lines[row-1][col-1] == 'A' && lines[row-2][col-2] == 'S' && !middle[row-1][col-1]){
+                        temp.push_back(lines[row-2][col]);
+                        temp.push_back(lines[row-1][col-1]);
+                        temp.push_back(lines[row][col-2]); 
+                        if (temp == target2 || temp == target3){
+                            middle[row-1][col-1] = true;
+                            suma2++;
+                        }
+                        temp = "";
+                    }
+                }
+
+                // prawy-gorny kwadrat
+                if (row - 2 >= 0 && col + 2 < lines[row].size()){
+                    if (lines[row-1][col+1] == 'A' && lines[row-2][col+2] == 'S' && !middle[row-1][col+1]){
+                        temp.push_back(lines[row-2][col]);
+                        temp.push_back(lines[row-1][col+1]);
+                        temp.push_back(lines[row][col+2]); 
+                        if (temp == target2 || temp == target3){
+                            middle[row-1][col+1] = true;
+                            suma2++;
+                        }
+                        temp = "";
+                    }
+                }
+
+                // lewy-dolny kwadrat
+                if (row + 2 < lines.size() && col - 2 >= 0){
+                    if (lines[row+1][col-1] == 'A' && lines[row+2][col-2] == 'S' && !middle[row+1][col-1]){
+                        temp.push_back(lines[row+2][col]);
+                        temp.push_back(lines[row+1][col-1]);
+                        temp.push_back(lines[row][col-2]); 
+                        if (temp == target2 || temp == target3){
+                            middle[row+1][col-1] = true;
+                            suma2++;
+                        }
+                        temp = "";
+                    }
+                }
+
+                // prawy-dolny kwadrat
+                if (row + 2 < lines.size() && col + 2 < lines[row].size() ){
+                    if (lines[row+1][col+1] == 'A' && lines[row+2][col+2] == 'S' && !middle[row+1][col+1]){
+                        temp.push_back(lines[row+2][col]);
+                        temp.push_back(lines[row+1][col+1]);
+                        temp.push_back(lines[row][col+2]); 
+                        if (temp == target2 || temp == target3){
+                            middle[row+1][col+1] = true;
+                            suma2++;
+                        }
+                        temp = "";
+                    }
+                }
+            }
+        }
+    }
     cout<<suma<<endl;
+    cout<<suma2<<endl;
 }
